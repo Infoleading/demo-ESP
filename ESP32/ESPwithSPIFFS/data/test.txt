@@ -1,0 +1,1 @@
+SPIFFS lets you access the flash memory like you would do in a normal filesystem in your computer, but simpler and more limited. You can read, write, close, and delete files. At the time of writing this post, SPIFFS doesn¡¯t support directories, so everything is saved on a flat structure.
