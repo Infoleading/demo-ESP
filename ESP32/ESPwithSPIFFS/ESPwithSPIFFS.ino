@@ -20,11 +20,23 @@ void setup() {
     Serial.println("Failed to open file for writing");
     return;
   }
-  if (!file.print("This is content of file test.txt in SPIFFS.")){
+  if (!file.print("This is content of file test.txt in SPIFFS.\n")){
     Serial.println("Failed to write file");
     return;
   }
   file.close();
+
+  //open file for appending
+  File file3 = SPIFFS.open("/test.txt", FILE_APPEND);
+  if(!file3){
+    Serial.println("Failed to open file for appending");
+    return;
+  }
+  if(!file3.println("Append a new line to file")){
+    Serial.println("Failed to append file");
+    return;
+  }
+  file3.close();
 
   // open file for reading
   File file2 = SPIFFS.open("/test.txt");
@@ -36,8 +48,10 @@ void setup() {
   while(file2.available()){
     Serial.write(file2.read());
   }
-  file2.close();
+  file2.close();  
+  
 }
+
  
 void loop() {
 
